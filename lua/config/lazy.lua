@@ -31,6 +31,7 @@ require("lazy").setup({
     {"tanvirtin/vgit.nvim"},
     {"lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {}},
     {'nvim-lualine/lualine.nvim'},
+    { 'Exafunction/codeium.vim', event = 'BufEnter'},
 
   {
     "yetone/avante.nvim",
