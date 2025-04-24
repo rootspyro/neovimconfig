@@ -3,7 +3,6 @@
   "avante.nvim": { "branch": "main", "commit": "c272bcd2ae576e2a8d5d332ff43d019a5b33cc58" },
   "coc.nvim": { "branch": "release", "commit": "7350645e1233d79aeed0c60a76f50c74ab9645ef" },
   "codeium.vim": { "branch": "main", "commit": "000de972de76f357c03da14f4f8dd9a969d4fe8c" },
-  "copilot.lua": { "branch": "master", "commit": "d661d65b4cab20a5c164f6d9081d91ed324fe4d8" },
   "dressing.nvim": { "branch": "master", "commit": "2d7c2db2507fa3c4956142ee607431ddb2828639" },
   "gruvbox.nvim": { "branch": "main", "commit": "977b0103c66d505233d739b417cf01bd5994883e" },
   "img-clip.nvim": { "branch": "main", "commit": "24c13df08e3fe66624bed5350a2a780f77f1f65b" },
