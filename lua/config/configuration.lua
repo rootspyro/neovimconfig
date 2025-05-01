@@ -15,7 +15,7 @@ vim.opt.clipboard = "unnamedplus"
 
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>n", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>x", vim.cmd.quit)
+vim.keymap.set("n", "<leader>x", "<cmd>bd<cr>", {desc = "Close current buffer"})
 vim.keymap.set("n", "<leader>vs", "<cmd>vsp<cr>", {desc = "Open Vertical split"})
 vim.keymap.set('n', '<leader>vh', '<cmd>sp<cr>', {desc = "Open horizontal split"})
 vim.api.nvim_set_keymap('n', '<C-Up>', ':resize +2<CR>', { noremap = true, silent = true })
