@@ -56,7 +56,7 @@ require("lazy").setup({
         auto_apply_diff_after_generation = false,
         support_paste_from_clipboard = false,
         minimize_diff = true,
-        enable_token_counting = true,
+        enable_token_counting = false,
         enable_cursor_planning_mode = false,
         enable_claude_text_editor_tool_mode = false,
       },
