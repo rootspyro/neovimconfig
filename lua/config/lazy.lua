@@ -42,7 +42,7 @@ require("lazy").setup({
       provider = "deepseek",
       providers = {
           deepseek = {
-            api_inherited_from = "openai",
+            __inherited_from = "openai",
             api_key_name = "DEEPSEEK_API_KEY",
             endpoint = "https://api.deepseek.ai",
             model = "deekseep-coder",
