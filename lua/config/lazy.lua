@@ -40,14 +40,13 @@ require("lazy").setup({
     version = false, -- set this if you want to always pull the latest change
     opts = {
       provider = "deepseek",
-      vendors = {
-        deepseek = {
-          __inherited_from = "openai",
-          api_key_name = "DEEPSEEK_API_KEY",
-          endpoint = "https://api.deepseek.com",
-          model = "deepseek-coder",
-          max_tokens = 8192,
-        },
+      providers = {
+          deepseek = {
+            api_inherited_from = "openai",
+            api_key_name = "DEEPSEEK_API_KEY",
+            endpoint = "https://api.deepseek.ai",
+            model = "deekseep-coder",
+          }
       },
       behaviour = {
         auto_suggestions = true, -- Activa el autocompletado
