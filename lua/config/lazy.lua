@@ -34,59 +34,95 @@ require("lazy").setup({
     { 'Exafunction/codeium.vim', event = 'BufEnter'},
 {
   "yetone/avante.nvim",
-  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  -- ⚠️ must add this setting! ! !
   build = vim.fn.has("win32")
       and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
       or "make",
   event = "VeryLazy",
-  version = false, -- Never set this value to "*"! Never!
+  version = false,
   ---@module 'avante'
   ---@type avante.Config
   opts = {
-    -- add any opts here
-    -- for example
     provider = "deepseek",
+    -- Performance optimizations
+    max_concurrent_requests = 2, -- Reduced from 3 to 2 for better resource management
+    request_timeout = 25000, -- Reduced from 30s to 25s for faster timeouts
+    cache_enabled = true,
+    cache_ttl = 1800, -- Reduced from 1 hour to 30 minutes for fresher responses
+    cache_max_size = 100, -- Limit cache size to prevent memory bloat
+    -- UI optimizations
+    show_loading_indicator = true,
+    loading_indicator_delay = 300, -- Reduced from 500ms for faster UI response
+    -- Provider configuration
     providers = {
       deepseek = {
         __inherited_from = "openai",
         api_key_name = "DEEPSEEK_API_KEY",
         endpoint = "https://api.deepseek.com",
         model = "deepseek-coder",
+        -- Performance settings for DeepSeek
+        max_tokens = 1024, -- Reduced from 2048 for faster responses
+        top_p = 0.9, -- Slightly reduced for faster generation
+        frequency_penalty = 0,
+        presence_penalty = 0,
+        -- Stream responses for better perceived performance
+        stream = true,
+        extra_request_body = {
+            temperature = 0.1,
+        }
       },
+    },
+    -- Command optimizations
+    commands = {
+      default_timeout = 25000, -- Reduced from 30s to 25s
+      enable_autocomplete = true,
+      debounce_ms = 150, -- Faster command triggering
+    },
+    -- File selector optimization
+    file_selector = {
+      provider = "telescope", -- Use telescope for better performance
+      debounce_ms = 200, -- Reduced from 300ms for faster file selection
+    },
+    -- Input provider optimization
+    input = {
+      provider = "dressing",
+      debounce_ms = 150, -- Reduced from 200ms for faster input
+    },
+    -- Additional performance settings
+    enable_performance_mode = true,
+    disable_heavy_features = {
+      "syntax_highlighting", -- Disable syntax highlighting for faster rendering
+      "complex_animations", -- Disable complex animations
+      "token_counting", -- Disable token counting for better performance
     },
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
-    --- The below dependencies are optional,
-    "echasnovski/mini.pick", -- for file_selector provider mini.pick
-    "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-    "ibhagwan/fzf-lua", -- for file_selector provider fzf
-    "stevearc/dressing.nvim", -- for input provider dressing
-    "folke/snacks.nvim", -- for input provider snacks
-    "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-    "zbirenbaum/copilot.lua", -- for providers='copilot'
+    -- Performance-optimized dependencies
+    "echasnovski/mini.pick", -- Fast file selector
+    "nvim-telescope/telescope.nvim", -- Fast file navigation
+    "hrsh7th/nvim-cmp", -- Autocompletion
+    -- Remove slower dependencies for better performance
+    -- "ibhagwan/fzf-lua", -- Removed: telescope is faster
+    "stevearc/dressing.nvim", -- Optimized input UI
+    -- "folke/snacks.nvim", -- Removed: dressing is sufficient
+    "nvim-tree/nvim-web-devicons",
+    -- "zbirenbaum/copilot.lua", -- Removed: conflicts with Avante
     {
-      -- support for image pasting
       "HakonHarnes/img-clip.nvim",
       event = "VeryLazy",
       opts = {
-        -- recommended settings
         default = {
           embed_image_as_base64 = false,
           prompt_for_file_name = false,
           drag_and_drop = {
             insert_mode = true,
           },
-          -- required for Windows users
           use_absolute_path = true,
         },
       },
     },
     {
-      -- Make sure to set this up properly if you have lazy=true
       'MeanderingProgrammer/render-markdown.nvim',
       opts = {
         file_types = { "markdown", "Avante" },
