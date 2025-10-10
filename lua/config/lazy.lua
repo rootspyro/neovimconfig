@@ -34,7 +34,7 @@ require("lazy").setup({
     { 'Exafunction/codeium.vim', event = 'BufEnter'},
 {
   "yetone/avante.nvim",
-  build = vim.fn.has("win32")
+  build = vim.fn.has("win32") ~= 0
       and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
       or "make",
   event = "VeryLazy",
