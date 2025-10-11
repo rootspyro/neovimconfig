@@ -31,7 +31,13 @@ require("lazy").setup({
     {"tanvirtin/vgit.nvim"},
     {"lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {}},
     {'nvim-lualine/lualine.nvim'},
-    { 'Exafunction/codeium.vim', event = 'BufEnter'},
+    -- { 'Exafunction/codeium.vim', event = 'BufEnter'},
+    {
+      "supermaven-inc/supermaven-nvim",
+      -- config = function()
+      --   require("supermaven-nvim").setup({})
+      -- end,
+    },
 {
   "yetone/avante.nvim",
   build = vim.fn.has("win32") ~= 0
