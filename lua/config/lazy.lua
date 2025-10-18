@@ -49,6 +49,7 @@ require("lazy").setup({
   ---@type avante.Config
   opts = {
     provider = "deepseek",
+    instructions_file = "avante.md",
     -- Performance optimizations
     max_concurrent_requests = 2, -- Reduced from 3 to 2 for better resource management
     request_timeout = 25000, -- Reduced from 30s to 25s for faster timeouts
