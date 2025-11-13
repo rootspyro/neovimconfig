@@ -22,7 +22,6 @@ require("lazy").setup({
     {'nvim-lua/plenary.nvim'},
     {'nvim-telescope/telescope.nvim', tag = '0.1.8'},
     {"nvim-tree/nvim-web-devicons", opts = {}},
-    {'kdheepak/lazygit.nvim'},
     {'neoclide/coc.nvim', branch = "release"},
     {'christoomey/vim-tmux-navigator'},
     {'terrortylor/nvim-comment'},
@@ -31,12 +30,8 @@ require("lazy").setup({
     {"tanvirtin/vgit.nvim"},
     {"lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {}},
     {'nvim-lualine/lualine.nvim'},
-    -- { 'Exafunction/codeium.vim', event = 'BufEnter'},
     {
       "supermaven-inc/supermaven-nvim",
-      -- config = function()
-      --   require("supermaven-nvim").setup({})
-      -- end,
     },
 {
   "yetone/avante.nvim",
