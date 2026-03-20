@@ -95,7 +95,7 @@ require("lazy").setup({
         endpoint = "https://api.deepseek.com",
         model = "deepseek-coder",
         -- Performance settings for DeepSeek
-        max_tokens = 1024, -- Reduced from 2048 for faster responses
+        max_tokens = 4096,
         top_p = 0.9, -- Slightly reduced for faster generation
         frequency_penalty = 0,
         presence_penalty = 0,
@@ -125,9 +125,7 @@ require("lazy").setup({
     -- Additional performance settings
     enable_performance_mode = true,
     disable_heavy_features = {
-      "syntax_highlighting", -- Disable syntax highlighting for faster rendering
       "complex_animations", -- Disable complex animations
-      "token_counting", -- Disable token counting for better performance
     },
   },
   dependencies = {
