@@ -33,6 +33,32 @@ require("lazy").setup({
     {
       "supermaven-inc/supermaven-nvim",
     },
+    {
+        "williamboman/mason.nvim",
+        build = ":MasonUpdate",
+        config = true,
+    },
+    {
+        "mfussenegger/nvim-dap",
+        dependencies = {
+            {
+                "rcarriga/nvim-dap-ui",
+                dependencies = { "nvim-neotest/nvim-nio" },
+                config = function()
+                    local dap = require("dap")
+                    local dapui = require("dapui")
+                    dapui.setup()
+                    dap.listeners.after.event_initialized["dapui_config"] = dapui.open
+                    dap.listeners.before.event_terminated["dapui_config"] = dapui.close
+                    dap.listeners.before.event_exited["dapui_config"] = dapui.close
+                end,
+            },
+            {
+                "theHamsta/nvim-dap-virtual-text",
+                config = true,
+            },
+        },
+    },
 {
   "nickjvandyke/opencode.nvim",
   dependencies = {
